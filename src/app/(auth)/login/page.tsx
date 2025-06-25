@@ -15,6 +15,7 @@ import React, { useTransition } from "react";
 import { BookOpenCheck, BrainCircuit, Check, Loader2 } from "lucide-react";
 
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const Login = () => {
   const [isPendingGithub, startGithub] = useTransition();
@@ -33,33 +34,39 @@ const Login = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4 dark:from-slate-900 dark:to-slate-800">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-black px-4 text-white">
       {/* App Logo/Branding */}
-      <div className="absolute top-6 left-6 flex items-center gap-2">
-        <BookOpenCheck className="h-8 w-8 text-primary" />
+      <div
+        className="absolute top-6 left-6 flex items-center gap-2 cursor-pointer"
+        onClick={() => redirect("/")}
+      >
+        <BookOpenCheck className="h-8 w-8 text-emerald-400" />
         <span className="text-xl font-bold tracking-tight">
-          Doubt<span className="text-primary">Hub</span>
+          Doubt<span className="text-amber-300">Hub</span>
         </span>
       </div>
 
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
-        <Card className="border-none shadow-lg dark:border dark:shadow-slate-700/25">
+        <Card className="bg-zinc-900 border border-zinc-800 shadow-lg">
           <CardHeader className="space-y-1 text-center">
-            <BrainCircuit className="mx-auto h-10 w-10" />
-            <CardTitle className="text-2xl font-bold tracking-tight">
-              Welcome to DoubtHub
+            <BookOpenCheck className="mx-auto h-10 w-10 text-emerald-400" />
+            <CardTitle className="text-2xl font-bold tracking-tight text-green-100">
+              Welcome to{" "}
+              <span className="text-xl font-bold tracking-tight text-white">
+                Doubt<span className="text-amber-300">Hub</span>
+              </span>
             </CardTitle>
-            <CardDescription className="text-sm">
+            <CardDescription className="text-sm text-zinc-400">
               The platform for students to ask, answer, and resolve doubts
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
+                <span className="w-full border-t border-zinc-700" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">
+                <span className="bg-zinc-900 px-2 text-zinc-500">
                   Continue with
                 </span>
               </div>
@@ -68,46 +75,46 @@ const Login = () => {
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <Button
                 variant="outline"
-                className="gap-2"
+                className="gap-2 border-emerald-500 text-emerald-400 hover:bg-emerald-900/10"
                 onClick={handleGithubLogin}
                 disabled={isPendingGithub}
               >
                 {isPendingGithub ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                  <FaGithub className="h-4 w-4" />
+                  <FaGithub className="h-4 w-4 text-emerald-500" />
                 )}
                 <span className="hidden sm:inline">GitHub</span>
               </Button>
 
               <Button
                 variant="outline"
-                className="gap-2"
+                className="gap-2 border-amber-400 text-amber-400 hover:bg-amber-900/10"
                 onClick={handleGoogleLogin}
                 disabled={isPendingGoogle}
               >
                 {isPendingGoogle ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                  <FaGoogle className="h-4 w-4 text-blue-600" />
+                  <FaGoogle className="h-4 w-4 text-amber-300" />
                 )}
                 <span className="hidden sm:inline">Google</span>
               </Button>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col items-center gap-2">
-            <p className="px-8 text-center text-sm text-muted-foreground">
+            <p className="px-8 text-center text-sm text-zinc-400">
               By continuing, you agree to our{" "}
               <Link
                 href="/terms"
-                className="underline underline-offset-4 hover:text-primary"
+                className="underline underline-offset-4 hover:text-emerald-300"
               >
                 Terms of Service
               </Link>{" "}
               and{" "}
               <Link
                 href="/privacy"
-                className="underline underline-offset-4 hover:text-primary"
+                className="underline underline-offset-4 hover:text-amber-300"
               >
                 Privacy Policy
               </Link>
@@ -117,19 +124,21 @@ const Login = () => {
         </Card>
 
         {/* App Features */}
-        <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-          <h3 className="mb-4 text-lg font-semibold">Why DoubtApp?</h3>
-          <ul className="space-y-3 text-sm text-muted-foreground">
+        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-6 shadow-sm">
+          <h3 className="mb-4 text-lg font-semibold text-emerald-300">
+            Why DoubtHub?
+          </h3>
+          <ul className="space-y-3 text-sm text-zinc-400">
             <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 text-green-500" />
+              <Check className="h-4 w-4 text-emerald-400" />
               <span>Instant help from peers and educators</span>
             </li>
             <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 text-green-500" />
+              <Check className="h-4 w-4 text-emerald-400" />
               <span>Organized by subjects and difficulty levels</span>
             </li>
             <li className="flex items-start gap-2">
-              <Check className="h-4 w-4 text-green-500" />
+              <Check className="h-4 w-4 text-emerald-400" />
               <span>Community voting for best answers</span>
             </li>
           </ul>
@@ -137,8 +146,10 @@ const Login = () => {
       </div>
 
       {/* Footer */}
-      <div className="absolute bottom-4 text-xs text-muted-foreground">
-        © {new Date().getFullYear()} DoubtHub - For Students, By Students
+      <div className="absolute bottom-4 text-xs text-zinc-500">
+        © {new Date().getFullYear()}{" "}
+        <span className="font-semibold text-emerald-400">DoubtHub</span> - For
+        Students, By Students
       </div>
     </div>
   );
