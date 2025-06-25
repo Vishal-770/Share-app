@@ -10,10 +10,8 @@ import { SparklesText } from "@/components/magicui/sparkles-text";
 import { UploadCloud, CheckCircle2, MessageSquareQuote } from "lucide-react";
 import { useTheme } from "next-themes";
 import { RetroGrid } from "@/components/magicui/retro-grid";
-import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import { div } from "motion/react-client";
 import { redirect } from "next/navigation";
 
 const Page = () => {

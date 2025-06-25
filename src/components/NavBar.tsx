@@ -2,9 +2,7 @@
 import {
   Navbar,
   NavBody,
-  NavItems,
   MobileNav,
-  NavbarLogo,
   NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
@@ -14,7 +12,6 @@ import { useState } from "react";
 import { ModeToggle } from "./ModeToggler";
 import { BookOpenCheck } from "lucide-react";
 import { RainbowButton } from "./magicui/rainbow-button";
-import { div } from "motion/react-client";
 import { redirect } from "next/navigation";
 export function NavbarDemo() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
