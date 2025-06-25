@@ -12,7 +12,7 @@ import {
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { signInWithGithub, signInWithGoogle } from "@/actions/auth";
 import React, { useTransition } from "react";
-import { BrainCircuit, Check, Loader2 } from "lucide-react";
+import { BookOpenCheck, BrainCircuit, Check, Loader2 } from "lucide-react";
 
 import Link from "next/link";
 
@@ -36,9 +36,9 @@ const Login = () => {
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 px-4 dark:from-slate-900 dark:to-slate-800">
       {/* App Logo/Branding */}
       <div className="absolute top-6 left-6 flex items-center gap-2">
-        <BrainCircuit className="h-8 w-8 text-primary" />
+        <BookOpenCheck className="h-8 w-8 text-primary" />
         <span className="text-xl font-bold tracking-tight">
-          Doubt<span className="text-primary">App</span>
+          Doubt<span className="text-primary">Hub</span>
         </span>
       </div>
 
@@ -47,7 +47,7 @@ const Login = () => {
           <CardHeader className="space-y-1 text-center">
             <BrainCircuit className="mx-auto h-10 w-10" />
             <CardTitle className="text-2xl font-bold tracking-tight">
-              Welcome to DoubtApp
+              Welcome to DoubtHub
             </CardTitle>
             <CardDescription className="text-sm">
               The platform for students to ask, answer, and resolve doubts
@@ -138,7 +138,7 @@ const Login = () => {
 
       {/* Footer */}
       <div className="absolute bottom-4 text-xs text-muted-foreground">
-        © {new Date().getFullYear()} DoubtApp - For Students, By Students
+        © {new Date().getFullYear()} DoubtHub - For Students, By Students
       </div>
     </div>
   );

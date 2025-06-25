@@ -12,23 +12,11 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 import { ModeToggle } from "./ModeToggler";
-
+import { BookOpenCheck } from "lucide-react";
+import { RainbowButton } from "./magicui/rainbow-button";
+import { div } from "motion/react-client";
+import { redirect } from "next/navigation";
 export function NavbarDemo() {
-  const navItems = [
-    {
-      name: "Features",
-      link: "#features",
-    },
-    {
-      name: "Pricing",
-      link: "#pricing",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
-  ];
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -36,10 +24,17 @@ export function NavbarDemo() {
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
+          <div className="flex justify-center items-center gap-3">
+            <BookOpenCheck size={35} />
+            <h2 className="text-xl">DoubtHub</h2>
+          </div>
           <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
+            <NavbarButton
+              variant="secondary"
+              onClick={() => redirect("/login")}
+            >
+              <RainbowButton variant="outline">Login</RainbowButton>
+            </NavbarButton>
             <NavbarButton variant="primary" className="p-0">
               <ModeToggle />
             </NavbarButton>
@@ -49,7 +44,10 @@ export function NavbarDemo() {
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
-            <NavbarLogo />
+            <div className="flex justify-center items-center gap-3">
+              <BookOpenCheck size={35} />
+              <h2 className="text-xl">DoubtHub</h2>
+            </div>
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -60,28 +58,20 @@ export function NavbarDemo() {
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           >
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
-              >
-                <span className="block">{item.name}</span>
-              </a>
-            ))}
             <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
+              <RainbowButton
                 className="w-full"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  redirect("/login");
+                }}
+                variant="outline"
               >
                 Login
-              </NavbarButton>
+              </RainbowButton>
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
+                className="p-0 w-0"
               >
                 <ModeToggle />
               </NavbarButton>
